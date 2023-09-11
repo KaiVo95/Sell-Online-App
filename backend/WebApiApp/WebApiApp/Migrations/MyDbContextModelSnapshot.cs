@@ -2,12 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApiApp.Data;
+using WebApiApp.Data.Models;
 
 namespace WebApiApp.Migrations
 {
-    [DbContext(typeof(MyDbContext))]
+    [DbContext(typeof(SellOnlineApiAppContext))]
     partial class MyDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

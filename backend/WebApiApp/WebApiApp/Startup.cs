@@ -9,8 +9,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Text;
-using WebApiApp.Data;
+using WebApiApp.Data.Models;
 using WebApiApp.Models;
+using WebApiApp.Services;
 
 namespace WebApiApp
 {
@@ -29,9 +30,14 @@ namespace WebApiApp
 
             services.AddControllers();
 
-            services.AddDbContext<MyDbContext>(option => {
+            services.AddDbContext<SellOnlineApiAppContext>(option =>
+            {
                 option.UseSqlServer(Configuration.GetConnectionString("MyDB"));
             });
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
 
             services.Configure<AppSetting>(Configuration.GetSection("AppSettings"));
 
